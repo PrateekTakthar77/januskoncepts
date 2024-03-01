@@ -4,8 +4,8 @@ require("dotenv").config();
 
 const Senduserquery = async (req, res, next) => {
   try {
-    const { fname, lname, email, phone, message } = req.body;
-    const data = new QueryModel({ fname, lname, email, phone, message });
+    const { fname, email, phone, message } = req.body;
+    const data = new QueryModel({ fname, email, phone, message });
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
@@ -25,7 +25,7 @@ const Senduserquery = async (req, res, next) => {
       to: "prateek@januskoncepts.net", // list of receivers
       subject: "Thank You for contacting us",
       text: `
-      Name ${fname} ${lname} 
+      Name ${fname}  
       Email ${email} 
       Phone ${phone} 
       Message ${message}
